@@ -7,7 +7,8 @@ from database import Base
 class Users(Base):
     __tablename__ = "Users"
 
-    User_ID: Mapped[int] = mapped_column(Integer, primary_key=True)
+    # Changed from Integer to String(50) (VARCHAR)
+    User_ID: Mapped[str] = mapped_column(String(50), primary_key=True)
     user_name: Mapped[str] = mapped_column(String(50), nullable=False)
     email: Mapped[str] = mapped_column(String(100), nullable=False, unique=True)
     password: Mapped[str] = mapped_column(String(255), nullable=False)
@@ -19,7 +20,10 @@ class Chat(Base):
 
     Chat_ID: Mapped[int] = mapped_column(Integer, autoincrement=True, primary_key=True)
     Chat_name: Mapped[str] = mapped_column(String(50), nullable=False)
-    User_Id: Mapped[int] = mapped_column(Integer, ForeignKey("Users.User_ID"), nullable=False)
+    
+    # Changed from Integer to String(50) to match Users.User_ID
+    User_Id: Mapped[str] = mapped_column(String(50), ForeignKey("Users.User_ID"), nullable=False)
+    
     Human_message: Mapped[str] = mapped_column(String(1000), nullable=False)
     AI_message: Mapped[str] = mapped_column(String(1000), nullable=True)
     Upload_Doc: Mapped[str] = mapped_column(String(100), nullable=True)
