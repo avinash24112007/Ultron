@@ -7,7 +7,7 @@ from database import Base
 class Users(Base):
     __tablename__ = "Users"
 
-    User_ID: Mapped[int] = mapped_column(Integer, autoincrement=True, primary_key=True)
+    User_ID: Mapped[int] = mapped_column(Integer, primary_key=True)
     user_name: Mapped[str] = mapped_column(String(50), nullable=False)
     email: Mapped[str] = mapped_column(String(100), nullable=False, unique=True)
     password: Mapped[str] = mapped_column(String(255), nullable=False)
