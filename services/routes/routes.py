@@ -1,7 +1,7 @@
 from models.model import Users, Chat, Enclaves, Assets, Reports
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from security import hash_password, verify_password
+from utils.security import hash_password, verify_password
 from utils.sessionmaker import make_db_session
 from schema.auth_s import pyd_login, pyd_register, ChatCreate
 
